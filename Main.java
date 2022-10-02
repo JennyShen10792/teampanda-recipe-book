@@ -5,8 +5,10 @@ public class Main {
 		Recipe r= new Recipe("Taco", "Flour, protein, veggies", "wrap");
 		Save s= new Save();
 		s.save(r);
-		//printing the recipe with the title inputted
+		//finding one specific recipe with inputted title
 		System.out.println(s.get_recipe("Taco"));
+		//show all the recipes
+		System.out.println(s.get_all());
 
 	}
 }

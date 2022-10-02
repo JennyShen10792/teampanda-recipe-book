@@ -19,7 +19,7 @@ public class Save{
 		String result = "";
 		try {
 			scanner = new Scanner(new File(t+".txt"));
-		while(scanner.hasNextLine())
+			while(scanner.hasNextLine())
 			{
 				result+= scanner.nextLine()+"\n";
 			}
@@ -29,5 +29,15 @@ public class Save{
 		}
 		return result;
 	}
+	public String get_all(){
+		 String results="";
+		  File a= new File(".");
+          for( File f : a.listFiles()){
+			if(f.getName().endsWith(".txt")){
+				results+=f.getName()+"\n";
+            }
+	}
+	return results;
 	
+}
 }
