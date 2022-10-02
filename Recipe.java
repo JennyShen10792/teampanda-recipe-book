@@ -69,4 +69,6 @@ public class Recipe {
     public String getName() {
         return this.name;
     }
+
+    // get and set methods from Rita
 }
