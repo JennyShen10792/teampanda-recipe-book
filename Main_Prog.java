@@ -5,7 +5,12 @@ import java.io.IOException;
 public class Main_Prog {
     public static void main(String[] args) throws IOException {
         Scanner in = new Scanner(System.in);
+<<<<<<< HEAD
         System.out.println("Hey there! This is your digital Recipe Book. Press \"c\" to create a recipe, \"s\" to search for a recipe:");
+=======
+        System.out.println(
+                "Hey there! This is your digital Recipe Book. Press \"c\" to create a recipe, \"s\" to search ...:");
+>>>>>>> f677f27c8667da00f5e6cb378147ccac09ac4c8b
         String option;
 
         while (!(option = in.nextLine()).equals("q")) {
@@ -36,24 +41,26 @@ public class Main_Prog {
 
                 Recipe newRecipe = new Recipe(recipe_name, descript, ingred_list, instructs);
                 System.out.println(newRecipe.getName());
-            }
-            else if (option.equals("s")) {
-            	System.out.println("Enter a keyword: ");
-            	String keyword = in.nextLine();
+
+            } else if (option.equals("s")) {
+                System.out.println("Search Keyword: ");
+				String keyword = in.nextLine();
 				ArrayList<Object> output = searchFunction(keyword, ingred_list);
 				for (int i = 0; i < output.size(); i++) {
 					System.out.println(output.get(i));
 				}
-       	 	}
+				public static ArrayList<Object> searchFunction(String word, ArrayList<Object> ingred_list){
+					ArrayList<Object> matches = new ArrayList<Object>();
+					for (int i = 0; i < ingred_list.size(); i++) {
+			 			if (ingred_list.get(i).recipe_name.toLowerCase().contains(word.toLowerCase())){
+				 			matches.add(ingred_list.get(i));
+			 			}	
+		 			}
+				return matches;	
+				}
+            }
+       	 }
        	in.close();
-        public static ArrayList<Object> searchFunction(String word, ArrayList<Object> ingred_list){
-			ArrayList<Object> matches = new ArrayList<Object>();
-			 for (int i = 0; i < ingred_list.size(); i++) {
-				 if (ingred_list.get(i).name.toLowerCase().contains(word.toLowerCase())){
-					 matches.add(ingred_list.get(i));
-				 }
-			 }
-			return matches;	
-		}
+  
     }
 }
