@@ -2,11 +2,11 @@
 
 public class Main {
 	public static void main(String []args) {
-		Recipe r= new Recipe("proteins", "beef", "cook");
+		Recipe r= new Recipe("Taco", "Flour, protein, veggies", "wrap");
 		Save s= new Save();
 		s.save(r);
-		System.out.println(s.get_recipe("proteins"));
+		//printing the recipe with the title inputted
+		System.out.println(s.get_recipe("Taco"));
 
-		
 	}
 }

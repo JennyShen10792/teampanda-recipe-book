@@ -1,3 +1,0 @@
-Title: chicken
-Ingredients: beef
-Instructions: cook

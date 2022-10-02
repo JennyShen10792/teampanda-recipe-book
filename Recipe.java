@@ -1,25 +1,16 @@
-
-import java.util.ArrayList;
-
-
-
 public class Recipe {
 
     private String title;
 	private String ingredient;
 	private String instruction;
-	public static ArrayList<Recipe> recipes = new ArrayList<Recipe>();
-	
-	
-	//constructor
+
 	public Recipe(String title, String ingredient, String instruction) {
 		this.title=title;
         this.ingredient=ingredient;
         this.instruction=instruction;
 	}
 	
-	
-	//getters and setters
+
 	public String getTitle() {
 		return title;
 	}
@@ -42,8 +33,6 @@ public class Recipe {
 		this.instruction = instruction;
 	}
 	
-
-	//return string representation
 	public String toString() {
 		return title+ "\n"+ ingredient + "\n" + instruction;
 	}
