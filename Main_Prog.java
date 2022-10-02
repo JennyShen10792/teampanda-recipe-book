@@ -5,7 +5,8 @@ import java.io.IOException;
 public class Main_Prog {
     public static void main(String[] args) throws IOException {
         Scanner in = new Scanner(System.in);
-        System.out.println("Hey there! This is your digital Recipe Book. Press \"c\" to create a recipe, ...:");
+        System.out.println(
+                "Hey there! This is your digital Recipe Book. Press \"c\" to create a recipe, \"s\" to search ...:");
         String option;
 
         while (!(option = in.nextLine()).equals("q")) {
@@ -36,6 +37,9 @@ public class Main_Prog {
 
                 Recipe newRecipe = new Recipe(recipe_name, descript, ingred_list, instructs);
                 System.out.println(newRecipe.getName());
+
+            } else if (option.equals("s")) {
+                // Jenny's Search Feature
             }
         }
         in.close();
