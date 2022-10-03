@@ -48,19 +48,18 @@ public class Main_Prog {
 				ArrayList<Object> output = searchFunction(keyword, ingred_list);
 				for (int i = 0; i < output.size(); i++) {
 					System.out.println(output.get(i));
-				}
-				public static ArrayList<Object> searchFunction(String word, ArrayList<Object> ingred_list){
-					ArrayList<Object> matches = new ArrayList<Object>();
-					for (int i = 0; i < ingred_list.size(); i++) {
-			 			if (ingred_list.get(i).recipe_name.toLowerCase().contains(word.toLowerCase())){
-				 			matches.add(ingred_list.get(i));
-			 			}	
-		 			}
-				return matches;	
-				}
+				}	
             }
        	 }
        	in.close();
-  
+       	public static ArrayList<Object> searchFunction(String word, ArrayList<Object> ingred_list){
+			ArrayList<Object> matches = new ArrayList<Object>();
+			for (int i = 0; i < ingred_list.size(); i++) {
+			 	if (ingred_list.get(i).recipe_name.toLowerCase().contains(word.toLowerCase())){
+				 	matches.add(ingred_list.get(i));
+			 	}	
+		 	}
+			return matches;	
+		}
     }
 }
