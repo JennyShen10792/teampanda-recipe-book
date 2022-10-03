@@ -5,12 +5,8 @@ import java.io.IOException;
 public class Main_Prog {
     public static void main(String[] args) throws IOException {
         Scanner in = new Scanner(System.in);
-<<<<<<< HEAD
-        System.out.println("Hey there! This is your digital Recipe Book. Press \"c\" to create a recipe, \"s\" to search for a recipe:");
-=======
         System.out.println(
-                "Hey there! This is your digital Recipe Book. Press \"c\" to create a recipe, \"s\" to search ...:");
->>>>>>> f677f27c8667da00f5e6cb378147ccac09ac4c8b
+                "Hey there! This is your digital Recipe Book. Press \"c\" to create a recipe, \"s\" to search for a recipe:");
         String option;
 
         while (!(option = in.nextLine()).equals("q")) {
@@ -44,22 +40,23 @@ public class Main_Prog {
 
             } else if (option.equals("s")) {
                 System.out.println("Search Keyword: ");
-				String keyword = in.nextLine();
-				ArrayList<Object> output = searchFunction(keyword, recipes);
-				for (int i = 0; i < output.size(); i++) {
-					System.out.println(output.get(i));
-				}	
+                String keyword = in.nextLine();
+                ArrayList<Object> output = searchFunction(keyword, recipes);
+                for (int i = 0; i < output.size(); i++) {
+                    System.out.println(output.get(i));
+                }
             }
-       	 }
-       	in.close();
+        }
+        in.close();
     }
-    public static ArrayList<Object> searchFunction(String word, ArrayList<Object> recipes){
-		ArrayList<Object> matches = new ArrayList<Object>();
-		for (int i = 0; i < recipes.size(); i++) {
-		 	if (recipes.get(i).recipe_name.toLowerCase().contains(word.toLowerCase())){
-			 	matches.add(recipes.get(i));
-		 	}	
-	 	}
-		return matches;	
-	}
+
+    public static ArrayList<Object> searchFunction(String word, ArrayList<Object> recipes) {
+        ArrayList<Object> matches = new ArrayList<Object>();
+        for (int i = 0; i < recipes.size(); i++) {
+            if (recipes.get(i).recipe_name.toLowerCase().contains(word.toLowerCase())) {
+                matches.add(recipes.get(i));
+            }
+        }
+        return matches;
+    }
 }
