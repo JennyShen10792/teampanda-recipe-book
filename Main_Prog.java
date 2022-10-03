@@ -45,21 +45,21 @@ public class Main_Prog {
             } else if (option.equals("s")) {
                 System.out.println("Search Keyword: ");
 				String keyword = in.nextLine();
-				ArrayList<Object> output = searchFunction(keyword, ingred_list);
+				ArrayList<Object> output = searchFunction(keyword, recipes);
 				for (int i = 0; i < output.size(); i++) {
 					System.out.println(output.get(i));
 				}	
             }
        	 }
        	in.close();
-       	public static ArrayList<Object> searchFunction(String word, ArrayList<Object> ingred_list){
-			ArrayList<Object> matches = new ArrayList<Object>();
-			for (int i = 0; i < ingred_list.size(); i++) {
-			 	if (ingred_list.get(i).recipe_name.toLowerCase().contains(word.toLowerCase())){
-				 	matches.add(ingred_list.get(i));
-			 	}	
-		 	}
-			return matches;	
-		}
     }
+    public static ArrayList<Object> searchFunction(String word, ArrayList<Object> recipes){
+		ArrayList<Object> matches = new ArrayList<Object>();
+		for (int i = 0; i < recipes.size(); i++) {
+		 	if (recipes.get(i).recipe_name.toLowerCase().contains(word.toLowerCase())){
+			 	matches.add(recipes.get(i));
+		 	}	
+	 	}
+		return matches;	
+	}
 }
