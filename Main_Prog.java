@@ -47,12 +47,12 @@ public class Main_Prog {
                 System.out.println("Search Keyword: ");
                 String keyword = in.nextLine();
                 ArrayList<Object> output = search(keyword);
-                if (output.size() > 0) {
+
+                if(output.size()>0){
+                	System.out.println("Recipes found: ");
                     for (int i = 0; i < output.size(); i++) {
-                        System.out.println("Recipes found: ");
-                        System.out.println(output.get(i));
-                    }
-                } else {
+                        System.out.println(output.get(i));}
+                }else{
                     System.out.println("No Matching results");
                 }
             } else if (option.equals("b")) {
