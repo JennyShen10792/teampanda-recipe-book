@@ -9,12 +9,9 @@ public class Recipe {
     private ArrayList<String> ingred_list;
     private ArrayList<String> cook_instruct;
 
-   
-
     public String getName() {
         return name;
     }
-
 
 
     public void setName(String name) {
@@ -64,7 +61,8 @@ public class Recipe {
         this.descript = descript;
         this.ingred_list = ingred_list;
         this.cook_instruct = cook_instruct;
-
+        
+        
         // create recipe with the name under "Recipe" folder
         String dir = "./Recipe/" + this.name + ".txt";
         File newFile = new File(dir);

@@ -1,15 +1,22 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.File;
 import java.io.IOException;
 
 public class Main_Prog {
     public static void main(String[] args) throws IOException {
         Scanner in = new Scanner(System.in);
-        System.out.println(
-                "Hey there! This is your digital Recipe Book. Press \"c\" to create a recipe, \"s\" to search for a recipe:");
+        boolean flag=true;
         String option;
 
-        while (!(option = in.nextLine()).equals("q")) {
+        while (flag) {
+            System.out.println(
+                "Hey there! This is your digital Recipe Book. Press \"c\" to create a recipe, \"s\" to search for a recipe, \"b\" to browse all existing recipes, \"q\" to quit:");
+            option=in.nextLine();
+            if(option.equals("q")){
+                flag=false;
+                System.out.println("EXIT PROGRAM");
+            }
             if (option.equals("c")) {
                 System.out.println("Enter a recipe name: ");
                 String recipe_name = in.nextLine();
@@ -34,29 +41,44 @@ public class Main_Prog {
                     instructs.add(new_instruc);
                 }
                 System.out.println();
-
                 Recipe newRecipe = new Recipe(recipe_name, descript, ingred_list, instructs);
-                System.out.println(newRecipe.getName());
+     
 
             } else if (option.equals("s")) {
                 System.out.println("Search Keyword: ");
                 String keyword = in.nextLine();
-                ArrayList<Object> output = searchFunction(keyword, recipes);
-                for (int i = 0; i < output.size(); i++) {
-                    System.out.println(output.get(i));
+                ArrayList<Object> output = search(keyword);
+                if(output.size()>0){
+                    for (int i = 0; i < output.size(); i++) {
+                        System.out.println("Recipes found: ");
+                        System.out.println(output.get(i));}
+                }else{
+                    System.out.println("No Matching results");
                 }
+            }else if (option.equals("b")){
+                File sourceFolder = new File("./Recipe/");
+                for(File f: sourceFolder.listFiles()){
+                    System.out.println(f.getName().substring(0, f.getName().lastIndexOf(".")));
             }
         }
-        in.close();
+            }
+
+        }
+    public static ArrayList<Object> search(String word){
+        ArrayList<Object> matches = new ArrayList<Object>();
+        try{
+        File sourceFolder = new File("./Recipe/");
+        for(File f: sourceFolder.listFiles()){
+            if(f.getName().toLowerCase().contains(word.toLowerCase())){
+                matches.add(f.getName().substring(0, f.getName().lastIndexOf(".")));
+            }
+        }
+        }catch(Exception e){
+            System.out.println("error with searching");
+            e.printStackTrace();
+    }
+    return matches;
+
     }
 
-    public static ArrayList<Object> searchFunction(String word, ArrayList<Object> recipes) {
-        ArrayList<Object> matches = new ArrayList<Object>();
-        for (int i = 0; i < recipes.size(); i++) {
-            if (recipes.get(i).recipe_name.toLowerCase().contains(word.toLowerCase())) {
-                matches.add(recipes.get(i));
-            }
-        }
-        return matches;
-    }
 }

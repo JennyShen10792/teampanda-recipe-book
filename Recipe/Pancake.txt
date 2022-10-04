@@ -1,0 +1,10 @@
+Description: 
+eggs
+
+Ingredients: 
+egg, milk, sugar, flour
+
+Step-by-step cooking instructions: 
+1. 1 mix all the ingredients together
+2. 2 put the mixture on the pan
+
