@@ -51,7 +51,7 @@ public class Main_Prog {
                 if(output.size()>0){
                 	System.out.println("Recipes found: ");
                     for (int i = 0; i < output.size(); i++) {
-                        System.out.println(output.get(i));}
+                        System.out.println(i + ". " + output.get(i));}
                 }else{
                     System.out.println("No Matching results");
                 }
