@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Recipe {
     private String name;
     private String descript;
-    private ArrayList<String> ingred_list;
+    private String ingred_list;
     private ArrayList<String> cook_instruct;
 
     public String getName() {
@@ -32,13 +32,13 @@ public class Recipe {
 
 
 
-    public ArrayList<String> getIngred_list() {
+    public String getIngred_list() {
         return ingred_list;
     }
 
 
 
-    public void setIngred_list(ArrayList<String> ingred_list) {
+    public void setIngred_list(String ingred_list) {
         this.ingred_list = ingred_list;
     }
 
@@ -56,7 +56,7 @@ public class Recipe {
 
 
 
-    public Recipe(String name, String descript, ArrayList<String> ingred_list, ArrayList<String> cook_instruct) {
+    public Recipe(String name, String descript, String ingred_list, ArrayList<String> cook_instruct) {
         this.name = name;
         this.descript = descript;
         this.ingred_list = ingred_list;
