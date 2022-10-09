@@ -15,12 +15,12 @@ public class MainGUI extends JFrame {
 		CreateGUI cgui=new CreateGUI();
 		cgui.setVisible(true);
 		}
-    /* 
+     
 	public void btns_click() {
 	  SearchGUI sgui=new SearchGUI();
 		sgui.show();
 		}
-        */
+        
 	public void btnb_click() {
 		BrowseGUI bgui=new BrowseGUI();
 		bgui.setVisible(true);
@@ -47,11 +47,11 @@ public class MainGUI extends JFrame {
 		
 		JButton btnSearch = new JButton("Search a recipe");
 		btnSearch.setBounds(117, 108, 206, 29);
-		// btnSearch.addActionListener(new ActionListener() {
-		//	public void actionPerformed(ActionEvent e) {
-		//		btns_click();
-		//	}
-		//});
+		 btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btns_click();
+			}
+		});
 		contentPane.add(btnSearch);
 		
 		JButton btnBrowse = new JButton("Browse all recipes");
