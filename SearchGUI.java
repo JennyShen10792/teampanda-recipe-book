@@ -20,8 +20,8 @@ import java.util.*;
 public class SearchGUI extends JFrame {
 
 	private JPanel contentPane;
-	//private JTextField searchField;
-	//private JButton searchButton;
+	private JTextField searchField;
+	private JButton searchButton;
 	private List<JButton> recipeButtons;
 	private JTextArea recipeArea;
 	
@@ -46,6 +46,7 @@ public class SearchGUI extends JFrame {
 		
 		if (recipeArea == null) {
 			recipeArea = new JTextArea();
+			recipeArea.setBounds(52, 600, 150, 148);
 			// add recipeArea to contentPane
 			contentPane.add(recipeArea);
 		}
@@ -65,13 +66,14 @@ public class SearchGUI extends JFrame {
 		    sb.append(line);      //appends line to string buffer  
 		    sb.append("\n");     //line feed   
 		    }  
+		    fileContent = sb.toString();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println(fileContent);
 		recipeArea.setText(fileContent);
-		
+		contentPane.repaint();
 	}
 	
 	private void searchBtnClick() {
@@ -81,19 +83,20 @@ public class SearchGUI extends JFrame {
 			contentPane.remove(recipeButtons.get(i));
 		}
 
-		
+		System.out.println(searchField);
 		String searchWords = searchField.getText();
 		
-		
+		System.out.println(searchWords);
 		ArrayList<String> searchResults = search(searchWords);
-		
+		System.out.println(searchResults);
 		
 		if (! searchResults.isEmpty()) {
-			int x = 40;
+			int y = 40;
 			for (int i = 0; i < searchResults.size(); i++) {
 				
 				final String searchResult = searchResults.get(i);
 				JButton recipeBtn = new JButton(searchResult);
+				System.out.println(recipeBtn);
 				recipeButtons.add(recipeBtn);
 				
 				recipeBtn.addActionListener(new ActionListener() {
@@ -106,8 +109,9 @@ public class SearchGUI extends JFrame {
 						}
 					}
 				});
-				recipeBtn.setBounds(117, x+70, 206, 29);
-				contentPane.add(recipeBtn);				
+				recipeBtn.setBounds(117, y+400, 206, 29);
+				contentPane.add(recipeBtn);		
+				contentPane.repaint();	
 			}
 			
 		}
@@ -122,7 +126,7 @@ public class SearchGUI extends JFrame {
 		recipeButtons = new ArrayList<JButton>();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 1000, 1000);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -135,8 +139,8 @@ public class SearchGUI extends JFrame {
 		welcomemsg.setBounds(23, 17, 258, 16);
 		contentPane.add(welcomemsg);
 		
-		JTextField searchField = new JTextField();
-		searchField.setBounds(52, 78, 299, 148);
+		searchField = new JTextField();
+		searchField.setBounds(52, 78, 150, 148);
 		contentPane.add(searchField);
 		JButton searchButton = new JButton("Search");
 		searchButton.setBounds(117, 108, 206, 29);
@@ -149,8 +153,6 @@ public class SearchGUI extends JFrame {
 		});
 		
 		contentPane.add(searchButton);
-		add(contentPane);
-		frame.setVisible(true);
 		
 
 //		 File sourceFolder = new File("./Recipe/");
