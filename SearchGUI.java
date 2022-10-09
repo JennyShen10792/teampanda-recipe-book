@@ -46,7 +46,8 @@ public class SearchGUI extends JFrame {
 		
 		if (recipeArea == null) {
 			recipeArea = new JTextArea();
-			recipeArea.setBounds(52, 600, 150, 148);
+			recipeArea.setBounds(20, 500, 1000, 800);
+			recipeArea.setLineWrap(true);
 			// add recipeArea to contentPane
 			contentPane.add(recipeArea);
 		}
@@ -91,7 +92,7 @@ public class SearchGUI extends JFrame {
 		System.out.println(searchResults);
 		
 		if (! searchResults.isEmpty()) {
-			int y = 40;
+			int y = 200;
 			for (int i = 0; i < searchResults.size(); i++) {
 				
 				final String searchResult = searchResults.get(i);
@@ -109,12 +110,13 @@ public class SearchGUI extends JFrame {
 						}
 					}
 				});
-				recipeBtn.setBounds(117, y+400, 206, 29);
-				contentPane.add(recipeBtn);		
-				contentPane.repaint();	
+				recipeBtn.setBounds(50, y, 400, 29);
+				contentPane.add(recipeBtn);
+				y = y + 25;		
 			}
 			
 		}
+		contentPane.repaint();	
 				
 		
 	}
@@ -126,7 +128,7 @@ public class SearchGUI extends JFrame {
 		recipeButtons = new ArrayList<JButton>();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 1000);
+		setBounds(100, 100, 1100, 1000);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -140,10 +142,10 @@ public class SearchGUI extends JFrame {
 		contentPane.add(welcomemsg);
 		
 		searchField = new JTextField();
-		searchField.setBounds(52, 78, 150, 148);
+		searchField.setBounds(52, 80, 300, 50);
 		contentPane.add(searchField);
 		JButton searchButton = new JButton("Search");
-		searchButton.setBounds(117, 108, 206, 29);
+		searchButton.setBounds(400, 108, 206, 29);
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				searchBtnClick();
