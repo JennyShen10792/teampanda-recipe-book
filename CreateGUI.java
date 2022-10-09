@@ -164,9 +164,6 @@ public class CreateGUI extends JFrame {
             }
             System.out.println("Successfully created and saved a new recipe!");
         }
-				
-					
-				
 			}
 		});
 		

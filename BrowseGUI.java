@@ -39,7 +39,7 @@ public class BrowseGUI extends JFrame {
 		 File sourceFolder = new File("./Recipe/");
 		 StringBuilder builder = new StringBuilder();
          for (File f : sourceFolder.listFiles()) {
-        	 builder.append(f.getName().substring(0, f.getName().lastIndexOf(".")));
+        	 builder.append(f.getName().substring(0, f.getName().lastIndexOf("."))+"\n");
            
 	}
          String output = builder.toString();
