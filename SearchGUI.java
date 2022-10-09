@@ -92,7 +92,7 @@ public class SearchGUI extends JFrame {
 		System.out.println(searchResults);
 		
 		if (! searchResults.isEmpty()) {
-			int y = 100;
+			int y = 150;
 			for (int i = 0; i < searchResults.size(); i++) {
 				
 				final String searchResult = searchResults.get(i);
@@ -145,7 +145,7 @@ public class SearchGUI extends JFrame {
 		searchField.setBounds(52, 50, 300, 50);
 		contentPane.add(searchField);
 		JButton searchButton = new JButton("Search");
-		searchButton.setBounds(400, 108, 206, 29);
+		searchButton.setBounds(375, 60, 117, 29);
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				searchBtnClick();
@@ -155,6 +155,17 @@ public class SearchGUI extends JFrame {
 		});
 		
 		contentPane.add(searchButton);
+		JButton btnReturn = new JButton("exit");
+		btnReturn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				MainGUI mgui=new MainGUI();
+				mgui.setVisible(true);
+			}
+		});
+		btnReturn.setForeground(new Color(250, 128, 114));
+		btnReturn.setBounds(375, 100, 117, 29);
+		contentPane.add(btnReturn);
 		
 
 //		 File sourceFolder = new File("./Recipe/");
