@@ -124,7 +124,7 @@ public class CreateGUI extends JFrame {
         try {
             flag = newFile.createNewFile();
             if (flag) {
-                successmsg.setText("Recipe created with name " + recipe_title);
+                successmsg.setText("Recipe created with name " + recipe_title+"!");
             
             } else {
                 successmsg.setText("Recipe with name " + recipe_title + " already exist!");
