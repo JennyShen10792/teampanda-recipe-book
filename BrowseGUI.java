@@ -1,9 +1,13 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.UIManager;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.event.ActionListener;
 import java.io.File;
+import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JTextArea;
 
@@ -29,16 +33,28 @@ public class BrowseGUI extends JFrame {
 		contentPane.add(welcomemsg);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(52, 78, 299, 148);
+		textArea.setBounds(23, 40, 371, 187);
 		contentPane.add(textArea);
 		
 		 File sourceFolder = new File("./Recipe/");
 		 StringBuilder builder = new StringBuilder();
          for (File f : sourceFolder.listFiles()) {
         	 builder.append(f.getName().substring(0, f.getName().lastIndexOf(".")));
-             builder.append("\n");
+           
 	}
          String output = builder.toString();
          textArea.setText(output);
+         
+         JButton btnNewButton = new JButton("exit");
+         btnNewButton.addActionListener(new ActionListener() {
+         	public void actionPerformed(ActionEvent e) {
+         		dispose();
+         		MainGUI mgui=new MainGUI();
+         		mgui.setVisible(true);
+         	}
+         });
+         btnNewButton.setForeground(UIManager.getColor("Button.select"));
+         btnNewButton.setBounds(164, 237, 117, 29);
+         contentPane.add(btnNewButton);
 }
 }

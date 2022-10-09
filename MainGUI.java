@@ -13,7 +13,7 @@ public class MainGUI extends JFrame {
 	
 	public void btnc_click() {
 		CreateGUI cgui=new CreateGUI();
-		cgui.show();
+		cgui.setVisible(true);
 		}
     /* 
 	public void btns_click() {
@@ -23,7 +23,7 @@ public class MainGUI extends JFrame {
         */
 	public void btnb_click() {
 		BrowseGUI bgui=new BrowseGUI();
-		bgui.show();
+		bgui.setVisible(true);
 		}
 	
 	
