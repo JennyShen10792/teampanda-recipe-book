@@ -12,6 +12,7 @@ public class MainGUI extends JFrame {
 	private JButton btnCreate;
 	
 	public void btnc_click() {
+		dispose();
 		CreateGUI cgui=new CreateGUI();
 		cgui.setVisible(true);
 		}
