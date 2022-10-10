@@ -1,4 +1,5 @@
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -49,7 +50,19 @@ public class SearchGUI extends JFrame {
 			recipeArea.setBounds(20, 500, 775, 600);
 			recipeArea.setLineWrap(true);
 			// add recipeArea to contentPane
-			contentPane.add(recipeArea);
+			
+			
+			JDialog output = new JDialog();
+		
+	
+			
+			
+			output.setSize(775, 600);
+			output.setLocation(20, 500);
+			output.add(recipeArea);
+
+			// add recipeArea to contentPane
+			output.setVisible(true);
 		}
 		
 		
