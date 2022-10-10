@@ -5,8 +5,10 @@ import javax.swing.UIManager;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JTextArea;
@@ -14,6 +16,8 @@ import javax.swing.JTextArea;
 public class BrowseGUI extends JFrame {
 
 	private JPanel contentPane;
+	private ArrayList<JButton> allFilesBtn;
+	private JLabel welcomemsg;
 
 	
 	public BrowseGUI() {
@@ -26,35 +30,70 @@ public class BrowseGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel welcomemsg = new JLabel("Now we have...");
+		welcomemsg = new JLabel("Now we have...");
 		welcomemsg.setForeground(new Color(240, 128, 128));
 		welcomemsg.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 14));
 		welcomemsg.setBounds(23, 17, 258, 16);
 		contentPane.add(welcomemsg);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(23, 40, 371, 187);
-		contentPane.add(textArea);
+		File sourceFolder = new File("./Recipe/");
 		
-		 File sourceFolder = new File("./Recipe/");
-		 StringBuilder builder = new StringBuilder();
-         for (File f : sourceFolder.listFiles()) {
-        	 builder.append(f.getName().substring(0, f.getName().lastIndexOf("."))+"\n");
-           
-	}
-         String output = builder.toString();
-         textArea.setText(output);
+//		 StringBuilder builder = new StringBuilder();
+//         for (File f : sourceFolder.listFiles()) {
+//        	 builder.append(f.getName().substring(0, f.getName().lastIndexOf("."))+"\n");
+//           
+//	}
+//         String output = builder.toString();
+
+		int fileCnt = sourceFolder.list().length;
+		int y = 45;
+		int x = 23;
+		for (File f : sourceFolder.listFiles()) {
+			String file_name = f.getName();
+			if (!file_name.contains(".txt") || file_name.charAt(0) == '.') continue;
+			int pos = file_name.lastIndexOf('.');
+			assert(pos != -1);
+			file_name = file_name.substring(0,pos);
+			JButton listFileBtn = new JButton(file_name);
+	        listFileBtn.addActionListener(new ActionListener() {
+	        	public void actionPerformed(ActionEvent e) {
+	        		dispose();
+	        		AllOrStep aos = new AllOrStep();
+	        		aos.setVisible(true);
+	        	}
+	        });
+	        
+	        
+	        Dimension btnSize = listFileBtn.getPreferredSize();
+	        int width,height;
+	        width = btnSize.width;
+	        height = btnSize.height;
+	        if (x > 450 || x + width > 450) {
+	        	x = 23;
+	        	y += height;
+	        }
+	        listFileBtn.setBounds(x,y,width,height);
+	        x += width;
+	        contentPane.add(listFileBtn);
+		}
+		
          
-         JButton btnNewButton = new JButton("exit");
-         btnNewButton.addActionListener(new ActionListener() {
+        
+        
+        
+        
+        JButton btnNewButton = new JButton("exit");
+        btnNewButton.addActionListener(new ActionListener() {
          	public void actionPerformed(ActionEvent e) {
          		dispose();
          		MainGUI mgui=new MainGUI();
          		mgui.setVisible(true);
          	}
-         });
-         btnNewButton.setForeground(UIManager.getColor("Button.select"));
-         btnNewButton.setBounds(164, 237, 117, 29);
-         contentPane.add(btnNewButton);
+        });
+        btnNewButton.setForeground(UIManager.getColor("Button.select"));
+        btnNewButton.setBounds(164, 237, 117, 29);
+        contentPane.add(btnNewButton);
+         
+         
 }
 }
