@@ -7,10 +7,13 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.io.File;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Toolkit;
+
 import javax.swing.JTextArea;
 
 public class BrowseGUI extends JFrame {
@@ -20,9 +23,14 @@ public class BrowseGUI extends JFrame {
 	private JLabel welcomemsg;
 
 	
+	public void close() {
+		WindowEvent closeWindow = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
+	}
+	
 	public BrowseGUI() {
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -83,6 +91,7 @@ public class BrowseGUI extends JFrame {
         
         
         JButton btnNewButton = new JButton("exit");
+        
         btnNewButton.addActionListener(new ActionListener() {
          	public void actionPerformed(ActionEvent e) {
          		dispose();
