@@ -42,10 +42,16 @@ public class SearchGUI extends JFrame {
         return matches;
 
     }
+    
 	
 	private void recipeBtnClick(String fileName) throws IOException {
 		
 		if (recipeArea == null) {
+		
+			AllOrStep step =new AllOrStep();
+			step.setVisible(true);
+			
+			
 			recipeArea = new JTextArea();
 			recipeArea.setBounds(20, 500, 775, 600);
 			recipeArea.setLineWrap(true);
