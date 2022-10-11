@@ -59,7 +59,7 @@ public class SearchGUI extends JFrame {
 			
 			output.setSize(775, 600);
 			output.setLocation(20, 500);
-			output.add(recipeArea);
+			output.getContentPane().add(recipeArea);
 
 			// add recipeArea to contentPane
 			output.setVisible(true);
@@ -140,7 +140,7 @@ public class SearchGUI extends JFrame {
 		
 		recipeButtons = new ArrayList<JButton>();
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 800, 800);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
