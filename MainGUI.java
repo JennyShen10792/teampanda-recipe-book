@@ -3,13 +3,20 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 
 public class MainGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JButton btnCreate;
+	
+	public void close() {
+		WindowEvent closeWindow = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
+		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
+	}
 	
 	public void btnc_click() {
 		dispose();
@@ -23,13 +30,14 @@ public class MainGUI extends JFrame {
 		}
         
 	public void btnb_click() {
+		close();
 		BrowseGUI bgui=new BrowseGUI();
 		bgui.setVisible(true);
 		}
 	
 	
 	public MainGUI() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(221, 160, 221));
