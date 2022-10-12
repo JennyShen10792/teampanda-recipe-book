@@ -61,12 +61,12 @@ public class BrowseGUI extends JFrame {
 			if (!file_name.contains(".txt") || file_name.charAt(0) == '.') continue;
 			int pos = file_name.lastIndexOf('.');
 			assert(pos != -1);
-			file_name = file_name.substring(0,pos);
-			JButton listFileBtn = new JButton(file_name);
+			final String fn_noExt = file_name.substring(0,pos);
+			JButton listFileBtn = new JButton(fn_noExt);
 	        listFileBtn.addActionListener(new ActionListener() {
 	        	public void actionPerformed(ActionEvent e) {
 	        		dispose();
-	        		AllOrStep aos = new AllOrStep();
+	        		AllOrStep aos = new AllOrStep(fn_noExt,new BrowseGUI());
 	        		aos.setVisible(true);
 	        	}
 	        });
