@@ -44,57 +44,57 @@ public class SearchGUI extends JFrame {
     }
     
 	
-	private void recipeBtnClick(String fileName) throws IOException {
-		
-		if (recipeArea == null) {
-		
-			AllOrStep step =new AllOrStep();
-			step.setVisible(true);
-			
-			
-			recipeArea = new JTextArea();
-			recipeArea.setBounds(20, 500, 775, 600);
-			recipeArea.setLineWrap(true);
-			// add recipeArea to contentPane
-			
-			
-			JDialog output = new JDialog();
-		
-	
-			
-			
-			output.setSize(775, 600);
-			output.setLocation(20, 500);
-			output.getContentPane().add(recipeArea);
-
-			// add recipeArea to contentPane
-			output.setVisible(true);
-		}
-		
-		
-		
-		File sourceFolder = new File("./Recipe/" + fileName + ".txt");
-		
-		// Read file
-		//
-		String fileContent = "";
-		try (BufferedReader br = new BufferedReader(new FileReader(sourceFolder))) {
-		    String line;
-		    StringBuffer sb=new StringBuffer();    //constructs a string buffer with no characters   
-		    while((line=br.readLine())!=null)  
-		    {  
-		    sb.append(line);      //appends line to string buffer  
-		    sb.append("\n");     //line feed   
-		    }  
-		    fileContent = sb.toString();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(fileContent);
-		recipeArea.setText(fileContent);
-		contentPane.repaint();
-	}
+//	private void recipeBtnClick(String fileName) throws IOException {
+//		
+//		if (recipeArea == null) {
+//		
+//			AllOrStep step =new AllOrStep();
+//			step.setVisible(true);
+//			
+//			
+//			recipeArea = new JTextArea();
+//			recipeArea.setBounds(20, 500, 775, 600);
+//			recipeArea.setLineWrap(true);
+//			// add recipeArea to contentPane
+//			
+//			
+//			JDialog output = new JDialog();
+//		
+//	
+//			
+//			
+//			output.setSize(775, 600);
+//			output.setLocation(20, 500);
+//			output.getContentPane().add(recipeArea);
+//
+//			// add recipeArea to contentPane
+//			output.setVisible(true);
+//		}
+//		
+//		
+//		
+//		File sourceFolder = new File("./Recipe/" + fileName + ".txt");
+//		
+//		// Read file
+//		//
+//		String fileContent = "";
+//		try (BufferedReader br = new BufferedReader(new FileReader(sourceFolder))) {
+//		    String line;
+//		    StringBuffer sb=new StringBuffer();    //constructs a string buffer with no characters   
+//		    while((line=br.readLine())!=null)  
+//		    {  
+//		    sb.append(line);      //appends line to string buffer  
+//		    sb.append("\n");     //line feed   
+//		    }  
+//		    fileContent = sb.toString();
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		System.out.println(fileContent);
+//		recipeArea.setText(fileContent);
+//		contentPane.repaint();
+//	}
 	
 	private void searchBtnClick() {
 		
@@ -121,12 +121,16 @@ public class SearchGUI extends JFrame {
 				
 				recipeBtn.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						try {
-							recipeBtnClick(searchResult);
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
+						//when I click on the file itself
+						dispose();
+						AllOrStep aos = new AllOrStep(searchResult,new SearchGUI());
+						aos.setVisible(true);
+//						try {
+//							recipeBtnClick(searchResult);
+//						} catch (IOException e1) {
+//							// TODO Auto-generated catch block
+//							e1.printStackTrace();
+//						}
 					}
 				});
 				recipeBtn.setBounds(50, y, 400, 29);
@@ -167,7 +171,9 @@ public class SearchGUI extends JFrame {
 		searchButton.setBounds(375, 60, 117, 29);
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//when I click on search button (search results should appear)
 				searchBtnClick();
+				//setVisible(true);
 			}
 			
 			

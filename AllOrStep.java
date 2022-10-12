@@ -7,6 +7,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class AllOrStep extends JFrame {
@@ -16,32 +21,20 @@ public class AllOrStep extends JFrame {
 	private JButton stepBtn;
 	private JButton exitBtn;
 
-	/**
-	 * Launch the application.
-	 */
-	
 	public void close() {
 		WindowEvent closeWindow = new WindowEvent(this,WindowEvent.WINDOW_CLOSING);
 		Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
 	}
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AllOrStep frame = new AllOrStep();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
+	
 	/**
 	 * Create the frame.
 	 */
-	public AllOrStep() {
+	
+	// This is the GUI for readAll or Step through instructions
+	public AllOrStep(String fileName,JFrame jf) {
+		super();
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -53,6 +46,10 @@ public class AllOrStep extends JFrame {
 		readAllBtn = new JButton("Read Entire Recipe");
 		readAllBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//show entire recipe at once!
+				//dispose();
+				Render ra = new Render(fileName);
+				ra.setVisible(true);
 			}
 		});
 		readAllBtn.setBounds(139, 39, 159, 43);
@@ -61,7 +58,8 @@ public class AllOrStep extends JFrame {
 		stepBtn = new JButton("Step Through");
 		stepBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//To Do
+				//step through the recipe
+				
 			}
 		});
 		stepBtn.setBounds(152, 106, 133, 49);
@@ -71,12 +69,13 @@ public class AllOrStep extends JFrame {
 		exitBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				close();
-				BrowseGUI bgui = new BrowseGUI();
-				bgui.setVisible(true);
+				jf.setVisible(true);
 			}
 		});
 		exitBtn.setBounds(162, 177, 117, 43);
 		contentPane.add(exitBtn);
+		setVisible(true);
 	}
+
 
 }
