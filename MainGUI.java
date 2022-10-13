@@ -7,6 +7,9 @@ import java.awt.event.WindowEvent;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.UIManager;
 
 public class MainGUI extends JFrame {
 
@@ -41,6 +44,7 @@ public class MainGUI extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 228, 225));
 		contentPane.setForeground(new Color(221, 160, 221));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
