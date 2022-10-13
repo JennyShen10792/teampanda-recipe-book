@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import java.awt.SystemColor;
 
 
 
@@ -27,10 +28,12 @@ public class CreateGUI extends JFrame {
 
 	
 	public CreateGUI() {
+		setBackground(new Color(255, 228, 225));
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(SystemColor.window);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);

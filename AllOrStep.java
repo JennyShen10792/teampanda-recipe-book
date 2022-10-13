@@ -13,6 +13,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.UIManager;
+import java.awt.SystemColor;
 
 public class AllOrStep extends JFrame {
 
@@ -38,6 +41,7 @@ public class AllOrStep extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(SystemColor.window);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);

@@ -15,6 +15,7 @@ import java.awt.Font;
 import java.awt.Toolkit;
 
 import javax.swing.JTextArea;
+import java.awt.SystemColor;
 
 public class BrowseGUI extends JFrame {
 
@@ -33,6 +34,7 @@ public class BrowseGUI extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(SystemColor.window);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);

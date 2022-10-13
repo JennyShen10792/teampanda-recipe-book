@@ -6,7 +6,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/harryliu/Downloads/json-20220924.jar"/>
-	<classpathentry kind="lib" path="/Users/harryliu/Downloads/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/harryliu/Documents/Collab Remotely/Java Project/Recipe_Book_Eclipse/json-20220924.jar"/>
+	<classpathentry kind="lib" path="/Users/harryliu/Documents/Collab Remotely/Java Project/Recipe_Book_Eclipse/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
