@@ -58,7 +58,7 @@ public class BrowseGUI extends JFrame {
 		int x = 23;
 		for (File f : sourceFolder.listFiles()) {
 			String file_name = f.getName();
-			if (!file_name.contains(".txt") || file_name.charAt(0) == '.') continue;
+			if (!file_name.contains(".json") || file_name.charAt(0) == '.') continue;
 			int pos = file_name.lastIndexOf('.');
 			assert(pos != -1);
 			final String fn_noExt = file_name.substring(0,pos);

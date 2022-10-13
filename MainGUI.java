@@ -19,14 +19,15 @@ public class MainGUI extends JFrame {
 	}
 	
 	public void btnc_click() {
-		dispose();
+		close();
 		CreateGUI cgui=new CreateGUI();
 		cgui.setVisible(true);
 		}
      
 	public void btns_click() {
-	  SearchGUI sgui=new SearchGUI();
-		sgui.show();
+		close();
+		SearchGUI sgui=new SearchGUI();
+		sgui.setVisible(true);
 		}
         
 	public void btnb_click() {

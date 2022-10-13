@@ -151,7 +151,7 @@ public class SearchGUI extends JFrame {
 		recipeButtons = new ArrayList<JButton>();
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 800, 800);
+		setBounds(100, 100, 531, 340);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -168,7 +168,8 @@ public class SearchGUI extends JFrame {
 		searchField.setBounds(52, 50, 300, 50);
 		contentPane.add(searchField);
 		JButton searchButton = new JButton("Search");
-		searchButton.setBounds(375, 60, 117, 29);
+		searchButton.setForeground(new Color(250, 128, 114));
+		searchButton.setBounds(364, 50, 117, 29);
 		searchButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//when I click on search button (search results should appear)
@@ -189,7 +190,7 @@ public class SearchGUI extends JFrame {
 			}
 		});
 		btnReturn.setForeground(new Color(250, 128, 114));
-		btnReturn.setBounds(375, 100, 117, 29);
+		btnReturn.setBounds(364, 92, 117, 29);
 		contentPane.add(btnReturn);
 		
 

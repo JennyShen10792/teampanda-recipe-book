@@ -84,9 +84,6 @@ public class CreateGUI extends JFrame {
 		
 		JTextArea instructions = new JTextArea();
 		instructions.setBounds(102, 139, 280, 71);
-
-		
-		
 		contentPane.add(instructions);
 		
 		JButton btnSave = new JButton("save");
@@ -156,48 +153,6 @@ public class CreateGUI extends JFrame {
 		            successmsg.setText("Successfully created and saved a new recipe!");
 			    }
         
-
-//        try {
-//            flag = newFile.createNewFile();
-//            if (flag) {
-//                successmsg.setText("Recipe created with name " + recipe_title+"!");
-//            
-//            } else {
-//                successmsg.setText("Recipe with name " + recipe_title + " already exist!");
-//            }
-//        } catch (IOException error) {
-//            successmsg.setText("An error occurred!");
-//            error.printStackTrace();
-//        }
-
-        // Write to the recipe file if flag is true.
-//        if (flag) {
-//            // write description into the file
-//            try {
-//                FileWriter myWriter = new FileWriter(dir, true);
-//                myWriter.write("Description: \n" + recipe_descript + "\n");
-//                myWriter.write(System.getProperty("line.separator"));
-//                System.out.println("Successfully wrote description to the file.");
-//
-//                // write a list of ingredients into the file
-//
-//                myWriter.write("Ingredients: \n" + String.join(", ", recipe_ingredient + "\n"));
-//                myWriter.write(System.getProperty("line.separator"));
-//                System.out.println("Successfully wrote a list of ingredients!");
-//
-//                // write cooking instructions into the file
-//                myWriter.write("Step-by-step cooking instructions: \n");
-//                for (int i = 0; i < recipe_instruct.size(); i++) {
-//                    myWriter.write((i + 1) + ". " + recipe_instruct.get(i) + "\n");
-//                }
-//                myWriter.write(System.getProperty("line.separator"));
-//                System.out.println("Successfully wrote cooking instructions!");
-//                myWriter.close();
-//
-//            } catch (final IOException error) {
-//                System.out.println("An error occurred.");
-//                error.printStackTrace();
-//            }
 			}
 		});
 		
