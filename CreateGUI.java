@@ -6,6 +6,8 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,6 +16,10 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+
+
 
 public class CreateGUI extends JFrame {
 
@@ -108,62 +114,90 @@ public class CreateGUI extends JFrame {
 
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				JSONObject recipe_json = new JSONObject();
                 String recipe_title=title.getText();
                 String recipe_descript=descript.getText();
                 String recipe_ingredient=ingredients.getText();
                 String instruct=instructions.getText();
 		        ArrayList<String> recipe_instruct = new ArrayList<>(Arrays.asList(instruct.split("\n")));
+		        
+		        JSONArray instruc_arr = new JSONArray();
+		        for (String inst: recipe_instruct) {
+		        	instruc_arr.add(inst);
+		        }
+		        
+		        recipe_json.put("title",recipe_title);
+		        recipe_json.put("descript", recipe_descript);
+		        recipe_json.put("ingredients",recipe_ingredient);
+		        recipe_json.put("instructions",instruc_arr);
 				Recipe newRecipe = new Recipe(recipe_title, recipe_descript, recipe_ingredient, recipe_instruct);
 
         // create recipe with the name under "Recipe" folder
-        String dir = "./Recipe/" + recipe_title + ".txt";
-        File newFile = new File(dir);
-        boolean flag = false;
-     
+				
+			    String dir = "./Recipe/" + recipe_title + ".json";
+			    File tmpDir = new File(dir);
+			    boolean flag = tmpDir.exists();
+			    if (flag) {
+			    	System.out.println("Recipe with name " + recipe_title + " already exists!");
+			    	successmsg.setText("Recipe with name " + recipe_title + " already exists!");
+			    }
+			    else {
+			    	try {
+			        	FileWriter file = new FileWriter(dir);
+			            file.write(recipe_json.toJSONString());
+			            file.close();
+			        }
+			        catch (IOException error) {
+			        	error.printStackTrace();
+			        }
+			        
+			        System.out.println("JSON File created: " + recipe_json);
+			        System.out.println("Successfully created and saved a new recipe!");
+		            successmsg.setText("Successfully created and saved a new recipe!");
+			    }
+        
 
-        try {
-            flag = newFile.createNewFile();
-            if (flag) {
-                successmsg.setText("Recipe created with name " + recipe_title+"!");
-            
-            } else {
-                successmsg.setText("Recipe with name " + recipe_title + " already exist!");
-            }
-        } catch (IOException error) {
-            successmsg.setText("An error occurred!");
-            error.printStackTrace();
-        }
+//        try {
+//            flag = newFile.createNewFile();
+//            if (flag) {
+//                successmsg.setText("Recipe created with name " + recipe_title+"!");
+//            
+//            } else {
+//                successmsg.setText("Recipe with name " + recipe_title + " already exist!");
+//            }
+//        } catch (IOException error) {
+//            successmsg.setText("An error occurred!");
+//            error.printStackTrace();
+//        }
 
         // Write to the recipe file if flag is true.
-        if (flag) {
-            // write description into the file
-            try {
-                FileWriter myWriter = new FileWriter(dir, true);
-                myWriter.write("Description: \n" + recipe_descript + "\n");
-                myWriter.write(System.getProperty("line.separator"));
-                System.out.println("Successfully wrote description to the file.");
-
-                // write a list of ingredients into the file
-
-                myWriter.write("Ingredients: \n" + String.join(", ", recipe_ingredient + "\n"));
-                myWriter.write(System.getProperty("line.separator"));
-                System.out.println("Successfully wrote a list of ingredients!");
-
-                // write cooking instructions into the file
-                myWriter.write("Step-by-step cooking instructions: \n");
-                for (int i = 0; i < recipe_instruct.size(); i++) {
-                    myWriter.write((i + 1) + ". " + recipe_instruct.get(i) + "\n");
-                }
-                myWriter.write(System.getProperty("line.separator"));
-                System.out.println("Successfully wrote cooking instructions!");
-                myWriter.close();
-
-            } catch (final IOException error) {
-                System.out.println("An error occurred.");
-                error.printStackTrace();
-            }
-            System.out.println("Successfully created and saved a new recipe!");
-        }
+//        if (flag) {
+//            // write description into the file
+//            try {
+//                FileWriter myWriter = new FileWriter(dir, true);
+//                myWriter.write("Description: \n" + recipe_descript + "\n");
+//                myWriter.write(System.getProperty("line.separator"));
+//                System.out.println("Successfully wrote description to the file.");
+//
+//                // write a list of ingredients into the file
+//
+//                myWriter.write("Ingredients: \n" + String.join(", ", recipe_ingredient + "\n"));
+//                myWriter.write(System.getProperty("line.separator"));
+//                System.out.println("Successfully wrote a list of ingredients!");
+//
+//                // write cooking instructions into the file
+//                myWriter.write("Step-by-step cooking instructions: \n");
+//                for (int i = 0; i < recipe_instruct.size(); i++) {
+//                    myWriter.write((i + 1) + ". " + recipe_instruct.get(i) + "\n");
+//                }
+//                myWriter.write(System.getProperty("line.separator"));
+//                System.out.println("Successfully wrote cooking instructions!");
+//                myWriter.close();
+//
+//            } catch (final IOException error) {
+//                System.out.println("An error occurred.");
+//                error.printStackTrace();
+//            }
 			}
 		});
 		
