@@ -47,8 +47,8 @@ public class AllOrStep extends JFrame {
 		readAllBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//show entire recipe at once!
-				//dispose();
-				Render ra = new Render(fileName,true);
+				dispose();
+				RenderGUI ra = new RenderGUI(fileName,true);
 				ra.setVisible(true);
 			}
 		});
@@ -59,7 +59,8 @@ public class AllOrStep extends JFrame {
 		stepBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//step through the recipe
-				Render ra = new Render(fileName,false);
+				dispose();
+				RenderGUI ra = new RenderGUI(fileName,false);
 				ra.setVisible(true);
 			}
 		});
